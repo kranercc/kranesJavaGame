@@ -1,5 +1,6 @@
 package com.github.krane.spells;
 
+import com.github.krane.entities.Player;
 import com.github.krane.helpers.TimeHelp;
 import com.github.krane.input.KeyManager;
 
@@ -11,10 +12,9 @@ public class Spells{
 		int dashCooldown = 4;
 		long endTimeDash = 0;
 		
-		
 		public float remainingTime_DASH = 0;
 
-		public float DashX(float x, int agi, KeyManager km)
+		public void DashX(Player p)
 		{
 			
 			long currentTime = new TimeHelp().getSeconds();
@@ -26,62 +26,58 @@ public class Spells{
 			
 			if(currentTime - endTimeDash >= 0) { trigger_Dash = true; }
 			
-			if(trigger_Dash == false) {return x;}
+			if(trigger_Dash == false) {return;}
 			
 			
-			if(km.shift)
+			if(p.getGame().getKeyManager().shift)
 			{
-				if(km.left)
+				if(p.getGame().getKeyManager().left)
 				{
 					trigger_Dash = false;
 					endTimeDash = new TimeHelp().getSeconds() + dashCooldown;
-					return x = x - agi*1.0f;
+					p.setX(p.getX() - p.agi*1.0f);
 				}
-				if(km.right)
+				if(p.getGame().getKeyManager().right)
 				{
 				
 					trigger_Dash = false;
 					endTimeDash = new TimeHelp().getSeconds() + dashCooldown;
-					return x = x + agi*1.0f;
+					p.setX(p.getX() + p.agi*1.0f);
 				
 				}
 				
 			}
-			
-			return x;
-			
+						
 		}
 		
-		
-		public float DashY(float y, int agi, KeyManager km)
+		public void DashY(Player p)
 		{			
 			long currentTime = new TimeHelp().getSeconds();
 
 			
 			if(currentTime - endTimeDash >= 0) { trigger_Dash = true; }
 			
-			if(trigger_Dash == false) {return y;}
+			if(trigger_Dash == false) {return;}
 			
-			if(km.shift)
+			if(p.getGame().getKeyManager().shift)
 			{
-				if(km.up)
+				if(p.getGame().getKeyManager().up)
 				{
 					trigger_Dash = false;
 					endTimeDash = new TimeHelp().getSeconds() + dashCooldown;
-					return y = y - agi*1.0f;
+					p.setY(p.getY() - p.agi*1.0f);
 					
 				}
-				if(km.down)
+				if(p.getGame().getKeyManager().down)
 				{
 					trigger_Dash = false;
 					endTimeDash = new TimeHelp().getSeconds() + dashCooldown;
-					return y = y + agi*1.0f;
+					p.setY(p.getY() + p.agi*1.0f);
 					
 				}
 				
 			}
 			
-			return y;
 			
 		}
 		
