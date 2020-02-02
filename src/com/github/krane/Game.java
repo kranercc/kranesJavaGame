@@ -29,6 +29,25 @@ public class Game implements Runnable{
 	public int width, height;
 	
 	
+	public int getWidth() {
+		return width;
+	}
+
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+
+	public int getHeight() {
+		return height;
+	}
+
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 	private BufferStrategy bStrategy;
 	private Graphics graphics;
 	
@@ -40,6 +59,9 @@ public class Game implements Runnable{
 	//States
 	private State gameState;
 	
+	//handler
+	private Handler handler;
+	
 	public Game(String title, int width, int height)
 	{
 		this.width = width;
@@ -47,6 +69,7 @@ public class Game implements Runnable{
 		this.title = title;
 		
 		keyManager = new KeyManager();
+		handler = new Handler(this);
 		
 	}
 
@@ -57,7 +80,7 @@ public class Game implements Runnable{
 		display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameState = new GameState(this);
+		gameState = new GameState(handler);
 		State.setState(gameState);
 	}
 	

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import com.github.krane.Display;
 import com.github.krane.Game;
+import com.github.krane.Handler;
 import com.github.krane.Worlds.World;
 import com.github.krane.entities.Player;
 import com.github.krane.gfx.AbilityPanel;
@@ -23,14 +24,18 @@ public class GameState extends State{
 	private World world;
 	
 	
-	public GameState(Game game)
+	public GameState(Handler handler)
 	{
-		super(game);
-		player = new Player(game, 100, 100);
+		super(handler);
+		
 		abilityPanel = new AbilityPanel();
 		expBar = new ExpBar(abilityPanel);
 		
 		world = new World("res/Worlds/village.txt");
+		handler.setWorld(world);
+		
+		player = new Player(handler.getGame(), 100, 100);
+		
 	}
 	
 	@Override

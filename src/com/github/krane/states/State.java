@@ -3,6 +3,7 @@ package com.github.krane.states;
 import java.awt.Graphics;
 
 import com.github.krane.Game;
+import com.github.krane.Handler;
 
 public abstract class State {
 
@@ -19,12 +20,13 @@ public abstract class State {
 		return currentState;
 	}
 	
-	protected Game game;
+	protected Handler handler;
 	
-	public State(Game game)
+	public State(Handler handler)
 	{
-		this.game = game;
+		this.handler = handler;
 	}
+	
 	//class
 	public abstract void tick();
 	public abstract void render(Graphics graphics);
