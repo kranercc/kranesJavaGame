@@ -19,7 +19,7 @@ public class Player extends Creature{
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.default_creature_width, Creature.default_creature_width);
 		this.game = game;
-	
+		
 		spells = new Spells();
 		levelingUP = new LevelingUP();
 		
@@ -27,8 +27,12 @@ public class Player extends Creature{
 		agi = 10;
 		intel = 7;
 		
+
 		level = 1;
-		speed =  default_speed + agi*0.05f;
+		
+		speed =  default_speed + agi*0.08f;
+		health = default_health + str*0.30f;
+		maxHealth = health;
 		
 		exp = 1;
 		requiredExp = 250;
@@ -50,10 +54,15 @@ public class Player extends Creature{
 	public void tick() {
 		
 		levelingUP.passiveExperience(this);
-		checkBounderies();
+		levelingUP.levelUp(this);
 		
+		checkBounderies();
+
 		spells.Dash(this);
-		//y = spells.DashY(y, agi, game.getKeyManager());
+		spells.Regen(this);
+		
+		
+		System.out.println(health + "<>"+ maxHealth);
 		
 		//System.out.println(speed);
 		if(game.getKeyManager().up)
@@ -70,8 +79,10 @@ public class Player extends Creature{
 		}
 		if(game.getKeyManager().right)
 		{
+			exp+=10;
 			x += speed;
 		}
+		
 		
 	}
 

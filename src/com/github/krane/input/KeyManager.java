@@ -11,7 +11,7 @@ public class KeyManager implements KeyListener{
 	
 	public boolean up, down, left, right;
 	
-	public boolean shift;
+	public boolean shift, q;
 	
 	public KeyManager()
 	{
@@ -25,7 +25,7 @@ public class KeyManager implements KeyListener{
 		left = keys[KeyEvent.VK_LEFT];
 		right = keys[KeyEvent.VK_RIGHT];
 		shift = keys[KeyEvent.VK_SHIFT];
-		
+		q = keys[KeyEvent.VK_Q];
 		
 	}
 	
