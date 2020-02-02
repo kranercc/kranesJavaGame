@@ -1,5 +1,6 @@
 package com.github.krane.gfx;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.function.IntPredicate;
 
@@ -14,17 +15,9 @@ public class ExpBar {
 	public ExpBar(AbilityPanel abilityPanel)
 	{
 		panelCoords = abilityPanel.panelCoords;
-		//expbarCoords = {1,2};
-		expbarCoords = expBarCoords();
+		expbarCoords = new int[] {panelCoords[0], panelCoords[1]+150, panelCoords[2], 10};
 	}
 	
-	
-	//Array constants can only be used in initializers FUCK YOU
-	public int[] expBarCoords()
-	{
-		int[] res = { panelCoords[0], panelCoords[1]+150, panelCoords[2], 10};
-		return res;
-	}
 	
 	public void draw(Graphics graphics, Player player)
 	{
@@ -39,9 +32,9 @@ public class ExpBar {
 		xpPercent = player.exp * 100 / player.requiredExp;
 		
 		int bar_XpValue_BasedOnPlayerXpPercentage = (int) (xpPercent / 100 * expbarCoords[2]);
-				
-		graphics.fillRect(expbarCoords[0], expbarCoords[1],  (int)bar_XpValue_BasedOnPlayerXpPercentage, expbarCoords[3]);
-		
+		graphics.setColor(Color.GREEN);
+		graphics.fillRect(expbarCoords[0]+1, expbarCoords[1]+1,  (int)bar_XpValue_BasedOnPlayerXpPercentage, expbarCoords[3]-1);
+		graphics.setColor(Color.BLACK);
 		//System.out.println("EXP: " + player.exp + " REQ: " + player.requiredExp + " XP%: " + bar_XpValue_BasedOnPlayerXpPercentage );
 	}
 	

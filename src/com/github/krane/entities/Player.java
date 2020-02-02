@@ -64,25 +64,8 @@ public class Player extends Creature{
 		spells.Dash(this);
 		spells.Regen(this);
 		
-		
-		//System.out.println(speed);
-		if(game.getKeyManager().up)
-		{
-			y -= speed;
-		}
-		if(game.getKeyManager().down)
-		{
-			y += speed;
-		}
-		if(game.getKeyManager().left)
-		{
-			x -= speed;
-		}
-		if(game.getKeyManager().right)
-		{
-			exp+=10;
-			x += speed;
-		}
+		getInput();
+		move();
 		
 		
 	}
@@ -125,6 +108,43 @@ public class Player extends Creature{
 		
 	}
 	
-	
+	public void getInput()
+	{
+		xMove = 0;
+		yMove = 0;
+		
+		if(game.getKeyManager().up)
+		{
+			yMove = -speed;
+		}
+		if(game.getKeyManager().down)
+		{
+			yMove = speed;
+		}if(game.getKeyManager().left)
+		{
+			xMove = -speed;
+		}if(game.getKeyManager().right)
+		{
+			xMove = speed;
+		}
+	}
 	
 }
+
+//System.out.println(speed);
+//		if(game.getKeyManager().up)
+//		{
+//			y -= speed;
+//		}
+//		if(game.getKeyManager().down)
+//		{
+//			y += speed;
+//		}
+//		if(game.getKeyManager().left)
+//		{
+//			x -= speed;
+//		}
+//		if(game.getKeyManager().right)
+//		{
+//			x += speed;
+//		}
