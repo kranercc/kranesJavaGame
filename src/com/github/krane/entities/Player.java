@@ -14,10 +14,11 @@ public class Player extends Creature{
 	private Spells spells;
 	private LevelingUP levelingUP;
 	
-	public int str, agi, intel, level,passiveXP_Ammount;
+	public int str, agi, intel, level;
 
 	public float exp;
 	public float requiredExp;
+	public float passiveXP_Ammount;
 	
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.default_creature_width, Creature.default_creature_width);
@@ -39,6 +40,7 @@ public class Player extends Creature{
 		
 		exp = 1;
 		requiredExp = 250;
+		
 		passiveXP_Ammount = 10;
 		
 		

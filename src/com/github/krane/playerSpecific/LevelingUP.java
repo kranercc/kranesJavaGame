@@ -22,7 +22,7 @@ public class LevelingUP {
 		if(player.exp >= player.requiredExp)
 		{
 			player.exp = 1;
-			player.requiredExp = (int) (player.requiredExp * 1.3);
+			player.requiredExp = player.requiredExp * 1.3f;
 			player.level = player.level + 1;
 			
 			
@@ -33,6 +33,8 @@ public class LevelingUP {
 			
 			player.setSpeed(player.default_speed + player.agi*0.08f);
 			player.setMaxHealth(player.getMaxHealth() + player.str*0.30f);
+			
+			player.passiveXP_Ammount= (int) (player.passiveXP_Ammount + player.level*0.3);
 		}
 	}
 	public void passiveExperience(Player p)
@@ -44,14 +46,14 @@ public class LevelingUP {
 		
 		if (endTime == 0)
 		{
-			endTime = currentTime + p.passiveXP_Ammount;
+			endTime = currentTime + 10;//once every 10 seocnds
 		}
 
 	
 		if (currentTime - endTime >= 0)
 		{
-			p.exp += 10;
-			endTime = currentTime + p.passiveXP_Ammount;
+			p.exp += p.passiveXP_Ammount;
+			endTime = currentTime + 10;
 		}
 		
 		

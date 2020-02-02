@@ -11,6 +11,7 @@ public class Tile {
 	public static Tile stoneTile = new StoneTile(1);
 	
 	public static Tile gravelTile = new GravelTile(2);
+	public static Tile dirtTile = new DirtTile(3);
 	
 	
 	
