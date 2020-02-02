@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import com.github.krane.Display;
 import com.github.krane.Game;
+import com.github.krane.Worlds.World;
 import com.github.krane.entities.Player;
 import com.github.krane.gfx.AbilityPanel;
 import com.github.krane.gfx.Assets;
@@ -19,18 +20,23 @@ public class GameState extends State{
 	private ExpBar expBar;
 	private Player player;
 	
+	private World world;
+	
+	
 	public GameState(Game game)
 	{
 		super(game);
 		player = new Player(game, 100, 100);
 		abilityPanel = new AbilityPanel();
 		expBar = new ExpBar(abilityPanel);
-	
+		
+		world = new World("");
 	}
 	
 	@Override
 	public void tick() 
 	{
+		world.tick();
 		player.tick();
 	}
 
@@ -40,7 +46,7 @@ public class GameState extends State{
 		
 		
 		
-		
+		world.render(graphics);
 		player.render(graphics);
 		
 		abilityPanel.draw(graphics, player);
