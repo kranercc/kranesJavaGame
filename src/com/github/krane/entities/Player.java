@@ -5,20 +5,24 @@ import java.awt.Graphics;
 import com.github.krane.Game;
 import com.github.krane.helpers.TimeHelp;
 import com.github.krane.input.KeyManager;
+import com.github.krane.playerSpecific.LevelingUP;
 import com.github.krane.spells.Spells;
 
 public class Player extends Creature{
 
 	private Game game;
 	private Spells spells;
+	private LevelingUP levelingUP;
 	
-	public int str, agi, intel, level, exp, requiredExp;
+	public int str, agi, intel, level, exp, requiredExp, passiveXP_Ammount;
 	
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.default_creature_width, Creature.default_creature_width);
 		this.game = game;
 	
 		spells = new Spells();
+		levelingUP = new LevelingUP();
+		
 		str = 15;
 		agi = 10;
 		intel = 7;
@@ -28,24 +32,24 @@ public class Player extends Creature{
 		
 		exp = 1;
 		requiredExp = 250;
-		
+		passiveXP_Ammount = 10;
 		
 		
 	}
 
-	public void levelUP()
-	{
-		str++;
-		agi++;
-		intel++;
-		level++;
-		speed = default_speed + agi*0.05f;
-	}
+//	public void levelUP()
+//	{
+//		str++;
+//		agi++;
+//		intel++;
+//		level++;
+//		speed = default_speed + agi*0.05f;
+//	}
 	
 	@Override
 	public void tick() {
 		
-		
+		levelingUP.passiveExperience(this);
 		checkBounderies();
 		
 		spells.Dash(this);
@@ -66,7 +70,6 @@ public class Player extends Creature{
 		}
 		if(game.getKeyManager().right)
 		{
-			exp++;
 			x += speed;
 		}
 		
