@@ -47,8 +47,7 @@ public class LevelingUP {
 			endTime = currentTime + p.passiveXP_Ammount;
 		}
 
-		
-		System.out.println("End: " + endTime);
+	
 		if (currentTime - endTime >= 0)
 		{
 			p.exp += 10;

@@ -14,7 +14,10 @@ public class Player extends Creature{
 	private Spells spells;
 	private LevelingUP levelingUP;
 	
-	public int str, agi, intel, level, exp, requiredExp, passiveXP_Ammount;
+	public int str, agi, intel, level,passiveXP_Ammount;
+
+	public float exp;
+	public float requiredExp;
 	
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.default_creature_width, Creature.default_creature_width);
@@ -61,8 +64,6 @@ public class Player extends Creature{
 		spells.Dash(this);
 		spells.Regen(this);
 		
-		
-		System.out.println(health + "<>"+ maxHealth);
 		
 		//System.out.println(speed);
 		if(game.getKeyManager().up)

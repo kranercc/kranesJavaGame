@@ -10,7 +10,7 @@ public class AbilityPanel {
 	
 	public AbilityPanel()
 	{
-		
+	
 	}
 	
 	public void draw(Graphics graphics, Player player)
@@ -20,7 +20,7 @@ public class AbilityPanel {
 		
 		//abilities
 		graphics.drawString("Dash Cooldown: " + player.getSpell().remainingTime_DASH , panelCoords[0] + 10, panelCoords[1] + 20);
-		graphics.drawString("Regen Cooldown: " + player.getSpell().remainingTime_Regen , panelCoords[0] + 10, panelCoords[1] + 30);
+		graphics.drawString("Regen Cooldown: " + player.getSpell().remainingTime_Regen , panelCoords[0] + 10, panelCoords[1] + 35);
 		
 	}
 	
