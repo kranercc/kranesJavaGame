@@ -30,7 +30,7 @@ public class GameState extends State{
 		abilityPanel = new AbilityPanel();
 		expBar = new ExpBar(abilityPanel);
 		
-		world = new World("");
+		world = new World("res/Worlds/village.txt");
 	}
 	
 	@Override
