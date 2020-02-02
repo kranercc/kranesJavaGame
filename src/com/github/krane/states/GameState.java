@@ -10,6 +10,8 @@ import com.github.krane.gfx.AbilityPanel;
 import com.github.krane.gfx.Assets;
 import com.github.krane.gfx.ExpBar;
 import com.github.krane.gfx.ImageLoader;
+import com.github.krane.tiles.BushTile;
+import com.github.krane.tiles.Tile;
 
 public class GameState extends State{
 
@@ -36,12 +38,18 @@ public class GameState extends State{
 	public void render(Graphics graphics) 
 	{
 		
-		graphics.drawImage(Assets.backgroundFirstVillage, 0,0, 1024, 768, null);
+		
+		
+		
 		player.render(graphics);
 		
 		abilityPanel.draw(graphics, player);
 		expBar.draw(graphics, player);
 		
+		
+		
+		
+	
 		
 		
 	}
