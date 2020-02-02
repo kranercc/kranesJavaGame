@@ -12,7 +12,7 @@ public class Player extends Creature{
 	private Game game;
 	private Spells spells;
 	
-	public int str, agi, intel, level;
+	public int str, agi, intel, level, exp, requiredExp;
 	
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.default_creature_width, Creature.default_creature_width);
@@ -25,6 +25,10 @@ public class Player extends Creature{
 		
 		level = 1;
 		speed =  default_speed + agi*0.05f;
+		
+		exp = 1;
+		requiredExp = 250;
+		
 		
 		
 	}
@@ -44,8 +48,7 @@ public class Player extends Creature{
 		
 		checkBounderies();
 		
-		
-		spells.DashX(this);
+		spells.Dash(this);
 		//y = spells.DashY(y, agi, game.getKeyManager());
 		
 		//System.out.println(speed);
@@ -63,6 +66,7 @@ public class Player extends Creature{
 		}
 		if(game.getKeyManager().right)
 		{
+			exp++;
 			x += speed;
 		}
 		

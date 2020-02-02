@@ -14,7 +14,7 @@ public class Spells{
 		
 		public float remainingTime_DASH = 0;
 
-		public void DashX(Player p)
+		public void Dash(Player p)
 		{
 			
 			long currentTime = new TimeHelp().getSeconds();
@@ -45,22 +45,6 @@ public class Spells{
 					p.setX(p.getX() + p.agi*1.0f);
 				
 				}
-				
-			}
-						
-		}
-		
-		public void DashY(Player p)
-		{			
-			long currentTime = new TimeHelp().getSeconds();
-
-			
-			if(currentTime - endTimeDash >= 0) { trigger_Dash = true; }
-			
-			if(trigger_Dash == false) {return;}
-			
-			if(p.getGame().getKeyManager().shift)
-			{
 				if(p.getGame().getKeyManager().up)
 				{
 					trigger_Dash = false;
@@ -75,11 +59,11 @@ public class Spells{
 					p.setY(p.getY() + p.agi*1.0f);
 					
 				}
-				
 			}
-			
-			
+						
 		}
+		
+		
 		
 		
 	

@@ -6,18 +6,24 @@ import java.awt.Graphics;
 import com.github.krane.Display;
 import com.github.krane.Game;
 import com.github.krane.entities.Player;
+import com.github.krane.gfx.AbilityPanel;
 import com.github.krane.gfx.Assets;
+import com.github.krane.gfx.ExpBar;
 import com.github.krane.gfx.ImageLoader;
 
 public class GameState extends State{
 
-	
+	private AbilityPanel abilityPanel;
+	private ExpBar expBar;
 	private Player player;
 	
 	public GameState(Game game)
 	{
 		super(game);
 		player = new Player(game, 100, 100);
+		abilityPanel = new AbilityPanel();
+		expBar = new ExpBar(abilityPanel);
+	
 	}
 	
 	@Override
@@ -33,11 +39,11 @@ public class GameState extends State{
 		graphics.drawImage(Assets.backgroundFirstVillage, 0,0, 1024, 768, null);
 		player.render(graphics);
 		
+		abilityPanel.draw(graphics, player);
+		expBar.draw(graphics, player);
 		
-		//panel
-		int panelCoords[] = {62, 565, 900, 100};
-		graphics.drawRect(panelCoords[0], panelCoords[1], panelCoords[2], panelCoords[3]);
-		graphics.drawString("Dash Cooldown: " + player.getSpell().remainingTime_DASH , panelCoords[0] + 10, panelCoords[1] + 20);
+		
+		
 	}
 
 	
